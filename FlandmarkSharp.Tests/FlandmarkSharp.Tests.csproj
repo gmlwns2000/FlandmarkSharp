@@ -1,0 +1,684 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\OpenCvSharp3-AnyCPU.3.2.0.20170419\build\OpenCvSharp3-AnyCPU.props" Condition="Exists('..\packages\OpenCvSharp3-AnyCPU.3.2.0.20170419\build\OpenCvSharp3-AnyCPU.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F74EAA2D-24C0-4916-A554-B789DFB37896}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>FlandmarkSharp.Tests</RootNamespace>
+    <AssemblyName>FlandmarkSharp.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="OpenCvSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp3-AnyCPU.3.2.0.20170419\lib\net40\OpenCvSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.Blob, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp3-AnyCPU.3.2.0.20170419\lib\net40\OpenCvSharp.Blob.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp3-AnyCPU.3.2.0.20170419\lib\net40\OpenCvSharp.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.UserInterface, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp3-AnyCPU.3.2.0.20170419\lib\net40\OpenCvSharp.UserInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\flandmark-master\data\flandmark_model.dat">
+      <Link>data\flandmark_model.dat</Link>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Aaron_Eckhart_0001.det">
+      <Link>data\Aaron_Eckhart_0001.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Aaron_Sorkin_0001.det">
+      <Link>data\Aaron_Sorkin_0001.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Jackie_Chan_0002.det">
+      <Link>data\Jackie_Chan_0002.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Jackie_Chan_0004.det">
+      <Link>data\Jackie_Chan_0004.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Jackie_Chan_0005.det">
+      <Link>data\Jackie_Chan_0005.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Jackie_Chan_0007.det">
+      <Link>data\Jackie_Chan_0007.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Jackie_Chan_0010.det">
+      <Link>data\Jackie_Chan_0010.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Jackie_Chan_0011.det">
+      <Link>data\Jackie_Chan_0011.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Jackie_Chan_0013.det">
+      <Link>data\Jackie_Chan_0013.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Kate_Hudson_0003.det">
+      <Link>data\Kate_Hudson_0003.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Kate_Hudson_0004.det">
+      <Link>data\Kate_Hudson_0004.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Katie_Holmes_0001.det">
+      <Link>data\Katie_Holmes_0001.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Keanu_Reeves_0001.det">
+      <Link>data\Keanu_Reeves_0001.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Keanu_Reeves_0002.det">
+      <Link>data\Keanu_Reeves_0002.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Keanu_Reeves_0003.det">
+      <Link>data\Keanu_Reeves_0003.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Kirsten_Dunst_0001.det">
+      <Link>data\Kirsten_Dunst_0001.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Lucy_Liu_0002.det">
+      <Link>data\Lucy_Liu_0002.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Lucy_Liu_0003.det">
+      <Link>data\Lucy_Liu_0003.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Marisa_Tomei_0001.det">
+      <Link>data\Marisa_Tomei_0001.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Marisa_Tomei_0002.det">
+      <Link>data\Marisa_Tomei_0002.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Michael_Schumacher_0001.det">
+      <Link>data\Michael_Schumacher_0001.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Michael_Schumacher_0002.det">
+      <Link>data\Michael_Schumacher_0002.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Michael_Schumacher_0004.det">
+      <Link>data\Michael_Schumacher_0004.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Paul_McCartney_0001.det">
+      <Link>data\Paul_McCartney_0001.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Paul_McCartney_0002.det">
+      <Link>data\Paul_McCartney_0002.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Paul_McCartney_0004.det">
+      <Link>data\Paul_McCartney_0004.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Paul_McCartney_0005.det">
+      <Link>data\Paul_McCartney_0005.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Paul_McCartney_0007.det">
+      <Link>data\Paul_McCartney_0007.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Pierce_Brosnan_0007.det">
+      <Link>data\Pierce_Brosnan_0007.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Pierce_Brosnan_0008.det">
+      <Link>data\Pierce_Brosnan_0008.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Prince_Charles_0001.det">
+      <Link>data\Prince_Charles_0001.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Prince_Charles_0002.det">
+      <Link>data\Prince_Charles_0002.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Robert_Duvall_0001.det">
+      <Link>data\Robert_Duvall_0001.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Robert_Duvall_0002.det">
+      <Link>data\Robert_Duvall_0002.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Robert_Duvall_0003.det">
+      <Link>data\Robert_Duvall_0003.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Robert_Duvall_0004.det">
+      <Link>data\Robert_Duvall_0004.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Robert_Duvall_0005.det">
+      <Link>data\Robert_Duvall_0005.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Salma_Hayek_0001.det">
+      <Link>data\Salma_Hayek_0001.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Salma_Hayek_0002.det">
+      <Link>data\Salma_Hayek_0002.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Salma_Hayek_0003.det">
+      <Link>data\Salma_Hayek_0003.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Tony_Blair_0005.det">
+      <Link>data\Tony_Blair_0005.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Tony_Blair_0006.det">
+      <Link>data\Tony_Blair_0006.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Vaclav_Havel_0001.det">
+      <Link>data\Vaclav_Havel_0001.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Vaclav_Havel_0002.det">
+      <Link>data\Vaclav_Havel_0002.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Vaclav_Havel_0003.det">
+      <Link>data\Vaclav_Havel_0003.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Vaclav_Havel_0004.det">
+      <Link>data\Vaclav_Havel_0004.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Vaclav_Havel_0005.det">
+      <Link>data\Vaclav_Havel_0005.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Vaclav_Havel_0006.det">
+      <Link>data\Vaclav_Havel_0006.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Vaclav_Havel_0007.det">
+      <Link>data\Vaclav_Havel_0007.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Vaclav_Havel_0008.det">
+      <Link>data\Vaclav_Havel_0008.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Vaclav_Havel_0009.det">
+      <Link>data\Vaclav_Havel_0009.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Vaclav_Klaus_0001.det">
+      <Link>data\Vaclav_Klaus_0001.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Vaclav_Klaus_0002.det">
+      <Link>data\Vaclav_Klaus_0002.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Vladimir_Putin_0001.det">
+      <Link>data\Vladimir_Putin_0001.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Vladimir_Putin_0002.det">
+      <Link>data\Vladimir_Putin_0002.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Wayne_Gretzky_0001.det">
+      <Link>data\Wayne_Gretzky_0001.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Wayne_Gretzky_0002.det">
+      <Link>data\Wayne_Gretzky_0002.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Winona_Ryder_0001.det">
+      <Link>data\Winona_Ryder_0001.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Winona_Ryder_0003.det">
+      <Link>data\Winona_Ryder_0003.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Winona_Ryder_0006.det">
+      <Link>data\Winona_Ryder_0006.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Winona_Ryder_0008.det">
+      <Link>data\Winona_Ryder_0008.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Winona_Ryder_0011.det">
+      <Link>data\Winona_Ryder_0011.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Winona_Ryder_0012.det">
+      <Link>data\Winona_Ryder_0012.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Winona_Ryder_0014.det">
+      <Link>data\Winona_Ryder_0014.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Winona_Ryder_0017.det">
+      <Link>data\Winona_Ryder_0017.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Winona_Ryder_0019.det">
+      <Link>data\Winona_Ryder_0019.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Winona_Ryder_0020.det">
+      <Link>data\Winona_Ryder_0020.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Winona_Ryder_0022.det">
+      <Link>data\Winona_Ryder_0022.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Woody_Allen_0001.det">
+      <Link>data\Woody_Allen_0001.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Woody_Allen_0002.det">
+      <Link>data\Woody_Allen_0002.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Woody_Allen_0003.det">
+      <Link>data\Woody_Allen_0003.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Zhang_Ziyi_0001.det">
+      <Link>data\Zhang_Ziyi_0001.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Zhang_Ziyi_0002.det">
+      <Link>data\Zhang_Ziyi_0002.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Zhang_Ziyi_0003.det">
+      <Link>data\Zhang_Ziyi_0003.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\flandmark-master\data\Images\Zhang_Ziyi_0004.det">
+      <Link>data\Zhang_Ziyi_0004.det</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\flandmark-master\data\Images\Aaron_Eckhart_0001.jpg">
+      <Link>data\Aaron_Eckhart_0001.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Aaron_Sorkin_0001.jpg">
+      <Link>data\Aaron_Sorkin_0001.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Jackie_Chan_0002.jpg">
+      <Link>data\Jackie_Chan_0002.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Jackie_Chan_0004.jpg">
+      <Link>data\Jackie_Chan_0004.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Jackie_Chan_0005.jpg">
+      <Link>data\Jackie_Chan_0005.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Jackie_Chan_0007.jpg">
+      <Link>data\Jackie_Chan_0007.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Jackie_Chan_0010.jpg">
+      <Link>data\Jackie_Chan_0010.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Jackie_Chan_0011.jpg">
+      <Link>data\Jackie_Chan_0011.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Jackie_Chan_0013.jpg">
+      <Link>data\Jackie_Chan_0013.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Kate_Hudson_0003.jpg">
+      <Link>data\Kate_Hudson_0003.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Kate_Hudson_0004.jpg">
+      <Link>data\Kate_Hudson_0004.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Katie_Holmes_0001.jpg">
+      <Link>data\Katie_Holmes_0001.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Keanu_Reeves_0001.jpg">
+      <Link>data\Keanu_Reeves_0001.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Keanu_Reeves_0002.jpg">
+      <Link>data\Keanu_Reeves_0002.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Keanu_Reeves_0003.jpg">
+      <Link>data\Keanu_Reeves_0003.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Kirsten_Dunst_0001.jpg">
+      <Link>data\Kirsten_Dunst_0001.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Lucy_Liu_0002.jpg">
+      <Link>data\Lucy_Liu_0002.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Lucy_Liu_0003.jpg">
+      <Link>data\Lucy_Liu_0003.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Marisa_Tomei_0001.jpg">
+      <Link>data\Marisa_Tomei_0001.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Marisa_Tomei_0002.jpg">
+      <Link>data\Marisa_Tomei_0002.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Michael_Schumacher_0001.jpg">
+      <Link>data\Michael_Schumacher_0001.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Michael_Schumacher_0002.jpg">
+      <Link>data\Michael_Schumacher_0002.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Michael_Schumacher_0004.jpg">
+      <Link>data\Michael_Schumacher_0004.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Paul_McCartney_0001.jpg">
+      <Link>data\Paul_McCartney_0001.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Paul_McCartney_0002.jpg">
+      <Link>data\Paul_McCartney_0002.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Paul_McCartney_0004.jpg">
+      <Link>data\Paul_McCartney_0004.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Paul_McCartney_0005.jpg">
+      <Link>data\Paul_McCartney_0005.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Paul_McCartney_0007.jpg">
+      <Link>data\Paul_McCartney_0007.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Pierce_Brosnan_0007.jpg">
+      <Link>data\Pierce_Brosnan_0007.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Pierce_Brosnan_0008.jpg">
+      <Link>data\Pierce_Brosnan_0008.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Prince_Charles_0001.jpg">
+      <Link>data\Prince_Charles_0001.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Prince_Charles_0002.jpg">
+      <Link>data\Prince_Charles_0002.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Robert_Duvall_0001.jpg">
+      <Link>data\Robert_Duvall_0001.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Robert_Duvall_0002.jpg">
+      <Link>data\Robert_Duvall_0002.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Robert_Duvall_0003.jpg">
+      <Link>data\Robert_Duvall_0003.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Robert_Duvall_0004.jpg">
+      <Link>data\Robert_Duvall_0004.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Robert_Duvall_0005.jpg">
+      <Link>data\Robert_Duvall_0005.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Salma_Hayek_0001.jpg">
+      <Link>data\Salma_Hayek_0001.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Salma_Hayek_0002.jpg">
+      <Link>data\Salma_Hayek_0002.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Salma_Hayek_0003.jpg">
+      <Link>data\Salma_Hayek_0003.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Tony_Blair_0005.jpg">
+      <Link>data\Tony_Blair_0005.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Tony_Blair_0006.jpg">
+      <Link>data\Tony_Blair_0006.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Vaclav_Havel_0001.jpg">
+      <Link>data\Vaclav_Havel_0001.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Vaclav_Havel_0002.jpg">
+      <Link>data\Vaclav_Havel_0002.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Vaclav_Havel_0003.jpg">
+      <Link>data\Vaclav_Havel_0003.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Vaclav_Havel_0004.jpg">
+      <Link>data\Vaclav_Havel_0004.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Vaclav_Havel_0005.jpg">
+      <Link>data\Vaclav_Havel_0005.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Vaclav_Havel_0006.jpg">
+      <Link>data\Vaclav_Havel_0006.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Vaclav_Havel_0007.jpg">
+      <Link>data\Vaclav_Havel_0007.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Vaclav_Havel_0008.jpg">
+      <Link>data\Vaclav_Havel_0008.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Vaclav_Havel_0009.jpg">
+      <Link>data\Vaclav_Havel_0009.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Vaclav_Klaus_0001.jpg">
+      <Link>data\Vaclav_Klaus_0001.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Vaclav_Klaus_0002.jpg">
+      <Link>data\Vaclav_Klaus_0002.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Vladimir_Putin_0001.jpg">
+      <Link>data\Vladimir_Putin_0001.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Vladimir_Putin_0002.jpg">
+      <Link>data\Vladimir_Putin_0002.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Wayne_Gretzky_0001.jpg">
+      <Link>data\Wayne_Gretzky_0001.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Wayne_Gretzky_0002.jpg">
+      <Link>data\Wayne_Gretzky_0002.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Winona_Ryder_0001.jpg">
+      <Link>data\Winona_Ryder_0001.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Winona_Ryder_0003.jpg">
+      <Link>data\Winona_Ryder_0003.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Winona_Ryder_0006.jpg">
+      <Link>data\Winona_Ryder_0006.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Winona_Ryder_0008.jpg">
+      <Link>data\Winona_Ryder_0008.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Winona_Ryder_0011.jpg">
+      <Link>data\Winona_Ryder_0011.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Winona_Ryder_0012.jpg">
+      <Link>data\Winona_Ryder_0012.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Winona_Ryder_0014.jpg">
+      <Link>data\Winona_Ryder_0014.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Winona_Ryder_0017.jpg">
+      <Link>data\Winona_Ryder_0017.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Winona_Ryder_0019.jpg">
+      <Link>data\Winona_Ryder_0019.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Winona_Ryder_0020.jpg">
+      <Link>data\Winona_Ryder_0020.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Winona_Ryder_0022.jpg">
+      <Link>data\Winona_Ryder_0022.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Woody_Allen_0001.jpg">
+      <Link>data\Woody_Allen_0001.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Woody_Allen_0002.jpg">
+      <Link>data\Woody_Allen_0002.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Woody_Allen_0003.jpg">
+      <Link>data\Woody_Allen_0003.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Zhang_Ziyi_0001.jpg">
+      <Link>data\Zhang_Ziyi_0001.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Zhang_Ziyi_0002.jpg">
+      <Link>data\Zhang_Ziyi_0002.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Zhang_Ziyi_0003.jpg">
+      <Link>data\Zhang_Ziyi_0003.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\flandmark-master\data\Images\Zhang_Ziyi_0004.jpg">
+      <Link>data\Zhang_Ziyi_0004.jpg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FlandmarkSharp\FlandmarkSharp.csproj">
+      <Project>{d5659e6e-d30d-4a29-80c4-c29b8e0edaef}</Project>
+      <Name>FlandmarkSharp</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>이 프로젝트는 이 컴퓨터에 없는 NuGet 패키지를 참조합니다. 해당 패키지를 다운로드하려면 NuGet 패키지 복원을 사용하십시오. 자세한 내용은 http://go.microsoft.com/fwlink/?LinkID=322105를 참조하십시오. 누락된 파일은 {0}입니다.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\OpenCvSharp3-AnyCPU.3.2.0.20170419\build\OpenCvSharp3-AnyCPU.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OpenCvSharp3-AnyCPU.3.2.0.20170419\build\OpenCvSharp3-AnyCPU.props'))" />
+  </Target>
+</Project>
