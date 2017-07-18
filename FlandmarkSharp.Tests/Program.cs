@@ -12,8 +12,8 @@ namespace FlandmarkSharp.Tests
     {
         static void Main(string[] args)
         {
-            var modeldata = new LibFlandmark(@"C:\Users\AinL\Documents\Visual Studio 2017\Projects\flandmark-master\data\flandmark_model.dat");
-            string dir = @"C:\Users\AinL\Documents\Visual Studio 2017\Projects\flandmark-master\data\images";
+            var modeldata = new LibFlandmark(Path.Combine(Environment.CurrentDirectory, @"data\flandmark_model.dat"));
+            string dir = Path.Combine(Environment.CurrentDirectory, @"data\");
             FileInfo[] files = new DirectoryInfo(dir).GetFiles();
             foreach (FileInfo fi in files)
             {
