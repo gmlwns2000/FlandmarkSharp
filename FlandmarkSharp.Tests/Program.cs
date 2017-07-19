@@ -14,7 +14,7 @@ namespace FlandmarkSharp.Tests
         {
             var modeldata = new LibFlandmark(Path.Combine(Environment.CurrentDirectory, @"data\flandmark_model.dat"));
 
-            VideoTest(modeldata);
+            ImageTest(modeldata);
         }
 
         static void VideoTest(LibFlandmark modeldata)
@@ -27,7 +27,7 @@ namespace FlandmarkSharp.Tests
                 {
                     using (Mat frame = new Mat())
                     {
-                        if (capture.Read(frame))
+                        if (capture.Read(frame) && !frame.Empty())
                         {
                             using (Mat m = frame.Clone())
                             {
@@ -88,12 +88,15 @@ namespace FlandmarkSharp.Tests
 
             var result = f.Detect(gray, bb);
 
-            for (int i = 0; i < result.Length / 2; i++)
+            if (result != null)
             {
-                Scalar color = Scalar.Red;
-                if (i == 0)
-                    color = Scalar.Magenta;
-                Cv2.Circle(m, new Point(result[i * 2], result[i * 2 + 1]), 2, color, 4);
+                for (int i = 0; i < result.Length / 2; i++)
+                {
+                    Scalar color = Scalar.Red;
+                    if (i == 0)
+                        color = Scalar.Magenta;
+                    Cv2.Circle(m, new Point(result[i * 2], result[i * 2 + 1]), 2, color, 4);
+                }
             }
 
             Cv2.Rectangle(m, new Rect(bb[0], bb[1], bb[2] - bb[0], bb[3] - bb[1]), Scalar.Blue, 2);

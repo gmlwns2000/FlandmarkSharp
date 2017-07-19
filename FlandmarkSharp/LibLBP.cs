@@ -1,4 +1,6 @@
-﻿using System;
+﻿//written by MattMatt2000
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,7 +10,7 @@ namespace FlandmarkSharp
 {
     public static class LibLBP
     {
-        public static void PyrFeaturesSparse(UInt32[] vec, UInt32 vecNDim, UInt32[] imgData, UInt16 imgNumRows, UInt16 imgNumCols, UInt32 vecStartInd = 0)
+        public static void PyrFeaturesSparse(ref UInt32[] vec, UInt32 vecNDim, UInt32[] imgData, UInt16 imgNumRows, UInt16 imgNumCols, UInt32 vecStartInd = 0)
         {
             UInt32 offset, ww, hh, x, y, center, j, idx;
             byte pattern;
