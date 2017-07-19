@@ -195,10 +195,6 @@ namespace FlandmarkSharp
                 p_int[i] = breader.ReadInt32();
             }
 
-            //            for (int i = 0; i < M * 4; ++i)
-            //            {
-            //                tst->data.mapTable[i] = p_int[i];
-            //            }
             for (int i = 0; i < M * 4; i++)
             {
                 tst.data.mapTable[i] = p_int[i];
@@ -223,18 +219,9 @@ namespace FlandmarkSharp
                 tst.data.lbp[i].hop = breader.ReadByte();
 
                 // lbp{idx}.wins
-                //                tsize = tst->data.lbp[idx].WINS_ROWS * tst->data.lbp[idx].WINS_COLS;
                 tsize = (int)(tst.data.lbp[i].WINS_ROWS * tst.data.lbp[i].WINS_COLS);
-
-                //                tst->data.lbp[idx].wins = (uint32_t*)malloc(tsize * sizeof(uint32_t));
+                
                 tst.data.lbp[i].wins = new uint[tsize];
-
-                //                if (fread(tst->data.lbp[idx].wins, tsize * sizeof(uint32_t), 1, fin) != 1)
-                //                {
-                //                    Console.Write("Error reading file %s\n", filename);
-                //                    return 0;
-                //                    //exit(1);
-                //                }
                 for (int r = 0; r < tsize; r++)
                 {
                     tst.data.lbp[i].wins[r] = breader.ReadUInt32();
@@ -244,15 +231,6 @@ namespace FlandmarkSharp
             // load model.options.S --------------------------------------------------
             tst.data.options.S = new int[4 * M];
 
-            //            if (fread(p_int, 4 * M * sizeof(int), 1, fin) != 1)
-            //            {
-            //                Console.Write("Error reading file %s\n", filename);
-            //                return 0;
-            //            }
-            //            for (int i = 0; i < 4 * M; ++i)
-            //            {
-            //                tst->data.options.S[i] = p_int[i];
-            //            }
             for (int i = 0; i < 4 * M; i++)
             {
                 tst.data.options.S[i] = breader.ReadInt32();
@@ -269,24 +247,17 @@ namespace FlandmarkSharp
                 switch (psigs_ind)
                 {
                     case 0:
-                        //                        tst->data.options.PsiGS0 = (FLANDMARK_PSIG*)malloc(tsize * sizeof(FLANDMARK_PSIG));
-                        //                        PsiGi = tst->data.options.PsiGS0;
                         tst.data.options.PsiGS0 = new FLANDMARK_PSIG[tsize];
                         PsiGi = tst.data.options.PsiGS0;
                         break;
                     case 1:
-                        //                        tst->data.options.PsiGS1 = (FLANDMARK_PSIG*)malloc(tsize * sizeof(FLANDMARK_PSIG));
-                        //                        PsiGi = tst->data.options.PsiGS1;
                         tst.data.options.PsiGS1 = new FLANDMARK_PSIG[tsize];
                         PsiGi = tst.data.options.PsiGS1;
                         break;
                     case 2:
-                        //                        tst->data.options.PsiGS2 = (FLANDMARK_PSIG*)malloc(tsize * sizeof(FLANDMARK_PSIG));
-                        //                        PsiGi = tst->data.options.PsiGS2;
                         tst.data.options.PsiGS2 = new FLANDMARK_PSIG[tsize];
                         PsiGi = tst.data.options.PsiGS2;
                         break;
-                        //                }
                 }
 
                 int temp = 0;
@@ -295,44 +266,20 @@ namespace FlandmarkSharp
                     PsiGi[i] = new FLANDMARK_PSIG();
 
                     // disp ROWS
-                    //                    p_int = (int*)malloc(sizeof(int));
-                    //                    if (fread(p_int, sizeof(int), 1, fin) != 1)
-                    //                    {
-                    //                        Console.Write("Error reading file %s\n", filename);
-                    //                        return 0;
-                    //                        //exit(1);
-                    //                    }
                     temp = breader.ReadInt32();
-
-                    //                    PsiGi[idx].ROWS = p_int[0];
+                    
                     PsiGi[i].ROWS = temp;
 
                     // disp COLS
-                    //                    p_int = (int*)malloc(sizeof(int));
-                    //                    if (fread(p_int, sizeof(int), 1, fin) != 1)
-                    //                    {
-                    //                        Console.Write("Error reading file %s\n", filename);
-                    //                        return 0;
-                    //                        //exit(1);
-                    //                    }
                     temp = breader.ReadInt32();
-
-                    //                    PsiGi[idx].COLS = p_int[0];
+                    
                     PsiGi[i].COLS = temp;
 
                     // disp
-                    //                    tmp_tsize = PsiGi[idx].ROWS * PsiGi[idx].COLS;
                     tmp_tsize = PsiGi[i].ROWS * PsiGi[i].COLS;
-
-                    //                    PsiGi[idx].disp = (int*)malloc(tmp_tsize * sizeof(int));
+                    
                     PsiGi[i].disp = new int[tmp_tsize];
 
-                    //                    if (fread(PsiGi[idx].disp, tmp_tsize * sizeof(int), 1, fin) != 1)
-                    //                    {
-                    //                        Console.WriteLine("Error reading file %s\n", filename);
-                    //                        return 0;
-                    //                        //exit(1);
-                    //                    }
                     for (int r = 0; r < tmp_tsize; r++)
                     {
                         PsiGi[i].disp[r] = breader.ReadInt32();
