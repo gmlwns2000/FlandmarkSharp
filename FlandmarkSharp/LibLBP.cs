@@ -66,9 +66,9 @@ namespace FlandmarkSharp
             for (w = imgNumCols, h = imgNumRows, N = 0, i = 0; i < NumPyramids && Math.Min(w, h) >= 3; i++)
             {
                 N += (w - 2) * (h - 2);
-
-                if (w % 2 == 0 ? false : true) w--;
-                if (h % 2 == 0 ? false : true) h--;
+                
+                if (w % 2 == 1) w--;
+                if (h % 2 == 1) h--;
                 w = w / 2;
                 h = h / 2;
             }

@@ -746,8 +746,6 @@ namespace FlandmarkSharp
         //{
         void get_normalized_image_frame(Mat input, int[] bbox, double[] bb, byte[] face_img, FLANDMARK_Model model)
         {
-            //    bool flag;
-            bool flag;
             //    int d[2];
             int[] d = new int[2];
             //    double c[2], nd[2];
@@ -760,30 +758,26 @@ namespace FlandmarkSharp
             //    nd[1] = d[1] * model->data.options.bw_margin[1] / 100.0f + d[1];
             d[0] = bbox[2] - bbox[0] + 1;
             d[1] = bbox[3] - bbox[1] + 1;
-            c[0] = (bbox[2] + bbox[0]) / 2.0f;
-            c[1] = (bbox[3] + bbox[1]) / 2.0f;
-            nd[0] = d[0] * model.data.options.bw_margin[0] / 100.0f + d[0];
-            nd[1] = d[1] * model.data.options.bw_margin[1] / 100.0f + d[1];
+            c[0] = (bbox[2] + bbox[0]) / 2.0;
+            c[1] = (bbox[3] + bbox[1]) / 2.0;
+            nd[0] = d[0] * model.data.options.bw_margin[0] / 100.0 + d[0];
+            nd[1] = d[1] * model.data.options.bw_margin[1] / 100.0 + d[1];
 
             //    bb[0] = (c[0] - nd[0] / 2.0f);
             //    bb[1] = (c[1] - nd[1] / 2.0f);
             //    bb[2] = (c[0] + nd[0] / 2.0f);
             //    bb[3] = (c[1] + nd[1] / 2.0f);
-            bb[0] = (c[0] - nd[0] / 2.0f);
-            bb[1] = (c[1] - nd[1] / 2.0f);
-            bb[2] = (c[0] + nd[0] / 2.0f);
-            bb[3] = (c[1] + nd[1] / 2.0f);
+            bb[0] = (c[0] - nd[0] / 2.0);
+            bb[1] = (c[1] - nd[1] / 2.0);
+            bb[2] = (c[0] + nd[0] / 2.0);
+            bb[3] = (c[1] + nd[1] / 2.0);
 
-            //    flag = bb[0] > 0 && bb[1] > 0 && bb[2] < input->width && bb[3] < input->height
-            //        && bbox[0] > 0 && bbox[1] > 0 && bbox[2] < input->width && bbox[3] < input->height;
-            flag = bb[0] > 0 && bb[1] > 0 && bb[2] < input.Width && bb[3] < input.Height && bbox[0] > 0 && bbox[1] > 0 && bbox[2] < input.Width && bbox[3] < input.Height;
+            bool flag = bb[0] > 0 && bb[1] > 0 && bb[2] < input.Width && bb[3] < input.Height && bbox[0] > 0 && bbox[1] > 0 && bbox[2] < input.Width && bbox[3] < input.Height;
 
-            //    if (!flag)
-            //    {
-            //        return 1;
-            //    }
             if (!flag)
-                throw new Exception();
+            {
+                return;
+            }
 
             //    IplImage* croppedImage = cvCreateImage(cvSize(input->width, input->height), IPL_DEPTH_8U, 1);
             //    IplImage* resizedImage = cvCreateImage(cvSize(model->data.options.bw[0], model->data.options.bw[1]), IPL_DEPTH_8U, 1);
@@ -813,8 +807,6 @@ namespace FlandmarkSharp
                 {
                     face_img[DefINDEX(x, y, model.data.options.bw[1])] = resizedImage.At<byte>(x, y);
                 }
-
-                //    }
             }
 
             //    cvReleaseImage(&croppedImage);
@@ -851,7 +843,7 @@ namespace FlandmarkSharp
             idx = -1;
             for (int dp_i = 0; dp_i < cols; ++dp_i)
             {
-                double dotprod = 0.0f;
+                double dotprod = 0.0;
                 for (int dp_j = 0; dp_j < tsize; ++dp_j)
                 {
                     dotprod += second[dp_j] * (double)(third[dp_i * tsize + dp_j]);
